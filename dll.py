@@ -115,7 +115,7 @@ class DLL:
         while temp:
             print(temp.data)
             temp = temp.prev
-
+# MY TRAILS
         # current = self.head
         # prev = None
         # if data == self.head.data:
