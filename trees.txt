@@ -1,0 +1,51 @@
+trees:
+ it is a non-linear data structure  =>  Hierarchial data structure nodes and branches.
+
+1. Tree it should be acyclic [no closed paths].
+2. It should not have self loops.
+
+root node: the node that does not contain any predeccessor/ parent.
+parent node: node that have child connections.
+degree: it is the count of no. of branches or children.
+degree(tree) = MAX(DEGREE OF NODES)
+depth of the node: the longest path or max no.of branches from paticular node to root node is called depth.
+height: longest path from paticular node to deepest leaf node.
+lead node => the node that doesn't not have any child.
+
+Balance Factor = Height of LEFT SUB TREE - Height of RIGHT SUB TREE
+
+height of skewed tree will be n nodes h = n-1
+
+time complexities of binary tree abd Skewed tree 0(n) 
+
+1.BINARY TREES
+2. DEGENERATE OR PATHOLOGICAL TREE
+3.Balanced Trees:
+1.AVL Trees // Balance Factor -1,0,1 // Rotations(4)
+2.Red-Black Trees // Balance Factore -1,0,1 // Zigzag Rotation
+3. b+ Trees(key&records //data) keys are stored in internal nodes // data(records) stored in lead nodes
+4. b- Tress(height) time complexities for redblack -avl -b+ trees will be 0(log n) 
+
+--
+
+in Strictly Binary Tree 
+no.of nodes if you are given l lead nodes :  2l-1
+height of unbalanced trees h = n-1 // no.of nodes
+no.of nodes for balanced binary treee = (2^(h+1))-1
+no.of leaf nodes if n internal nodes are given => n+1
+
+travesal
+
+inorder left ROOT right (it gives u ordered sequence // sorted order // ascending order)
+level order -->  BFS
+pre order ROOT left right
+post order Left right ROOT
+
+
+``APPLICATIONS OF TREES``
+Implementing the hierarchical structures in computer systems like directory and filesystem.
+Decision making in game amplication
+Implementing the navigation structure of a website
+Parsing of expressions and statements in programming language compilers
+path-finding algorithm to implement in AI, Robotics and Video games applications.
+
