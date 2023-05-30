@@ -13,8 +13,11 @@ class DLL:
     def insert_at_start(self,some_data:int):
         '''This Function adds entered data at the start of the DoublyLinkedList.'''
         data = Node(some_data)
+        # if self.head is None:
+        #     self.head = data
+        #     data.next = self.head
         current = self.head
-        prev = None
+        # prev = None
         while current:
             if current.prev == None:
                 temp = current
@@ -27,7 +30,7 @@ class DLL:
         '''This function adds entered data at the End of the DoublyLinkedList.'''
         data = Node(some_data)
         current = self.head
-        
+
         if self.head == None:
             self.head = data
 
