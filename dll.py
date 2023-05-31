@@ -115,7 +115,7 @@ class DLL:
         while temp:
             print(temp.data)
             temp = temp.prev
-
+# MY TRAILS
         # current = self.head
         # prev = None
         # if data == self.head.data:
@@ -183,16 +183,16 @@ class DLL:
 
 
 dll = DLL()
+dll.insert_at_start(0)
 dll.insert_at_end(1)
 dll.insert_at_end(2)
 dll.insert_at_end(4)
 dll.insert_anywhere(3,2)
-dll.insert_at_start(0)
 dll.delete_at_start()
 dll.delete_at_end()
 dll.TraverseDLL()
 dll.delete_data(3)
-print("\n")
+print("\n After Deletion: \n")
 dll.TraverseDLL()
 
 
