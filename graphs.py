@@ -3,6 +3,8 @@
 #Delete
 #Size
 
+
+
 class graphs:
     def __init__(self,size:int,weight=None) -> None:
         self.weight = weight
@@ -10,6 +12,7 @@ class graphs:
         for i in range(size):
             self.AdjMatrix.append([0 for i in range(size)])
         self.size = size
+        # print(self.AdjMatrix)
 
     def adding_edges(self,v1,v2):
         self.AdjMatrix[v1][v2] = 1
@@ -20,15 +23,28 @@ class graphs:
             self.AdjMatrix[v1][v2] = self.AdjMatrix[v2][v1] = 0
 
     def Travese_Graph(self):
-        for rows in self.AdjMatrix:
-            for val in rows:
-                print(self.AdjMatrix[val])
+        for row in self.AdjMatrix:
+            for val in row:
+                print(val, end='')
+            print()
             
+    def DFS(graphs,v,discovered,parent = -1): 
+        discovered[v] = True
         
+        for w in graphs.AdjMatrix[v]:
+            if DFS(graphs,w,discovered,v):
+                return True
+            elif w != parent:
+                return True
+            return False
+
+
+
 gg = graphs(4)
 gg.adding_edges(1,2)
 gg.adding_edges(1,1)
-# gg.adding_edges(1,0)
-# gg.adding_edges(3,2)
-# gg.adding_edges(0,0)
+gg.adding_edges(1,0)
+gg.adding_edges(3,2)
+gg.adding_edges(0,0)
+gg.deleting_edges(0,0)
 gg.Travese_Graph()
