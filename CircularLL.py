@@ -14,9 +14,9 @@ class CSLL:
 
         if not self.head:
             self.head = data
-            data.next = self.head # type: ignore
+            data.next = self.head 
         else:
-            while current.next is not self.head:
+            while current.next is not self.head: 
                 current = current.next
             current.next = data
             data.next = self.head
@@ -30,7 +30,7 @@ class CSLL:
 
         if not self.head:
             self.head = data
-            data.next = self.head
+            # data.next = self.head
         else: 
             while current.next is not self.head:
                 current = current.next
@@ -45,7 +45,6 @@ class CSLL:
         data = Node(data)
         current = self.head
         count = 0
-        prev = None
 
         if not self.head:  
             self.head = data
@@ -56,18 +55,22 @@ class CSLL:
             self.insert_at_start(data)
             return
 
-        while count < pos:
-            prev = current
-            current = current.next
-            count += 1
-            if current == self.head:  
-                print("There is NO such POSITION!")
-                return False
-
-        prev.next = data
-        data.next = current
-
+        while count+1 <= pos:
+            if count != pos:
+                current = current.next
+                
+            elif count == pos:
+                if current.next is not self.head:
+                    current = current.next
+                    count += 1
+                else:
+                    self.insert_at_end(data)  
+                    return
+        data.next = current.next
+        current.next = data
         return
+
+        
 
     def TraverseCLL(self):
         current = self.head
@@ -105,3 +108,9 @@ class CSLL:
     def delete_at_start(self):
         pass
         
+cll = CSLL()
+cll.insert_at_start(1)
+cll.insert_at_end(2)
+cll.insert_at_end(4)
+cll.insert_at_pos(3,2)
+cll.TraverseCLL()
