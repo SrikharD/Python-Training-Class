@@ -3,100 +3,114 @@ class Node:
         self.data = data
         self.next = None
         
-class SLL:
+class CSLL:
     def __init__(self):
         self.head = None
 
     def insert_at_start(self,some_data:int)-> None: 
+        '''This function inserts data at the Start of the Circular Linked List.'''
         data = Node(some_data)
         current = self.head
-        Temp= None
-        if current:
-            Temp = current
-            self.head = data
-            data.next = Temp
 
-    def insert_at_end(self,some_data):
-        
-        data = Node(some_data)
-        current = self.head
-        
-        if self.head == None:
+        if not self.head:
             self.head = data
+            data.next = self.head 
         else:
-            while current.next is not None:
+            while current.next is not self.head: 
                 current = current.next
             current.next = data
             data.next = self.head
+            self.head = data                
+        return
+
+    def insert_at_end(self,some_data:int) -> None:
+        '''This Function inserts data at the End of the Circular Linked List.'''
+        data = Node(some_data)
+        current = self.head
+
+        if not self.head:
+            self.head = data
+            # data.next = self.head
+        else: 
+            while current.next is not self.head:
+                current = current.next
+            current.next = data
+            data.next = self.head
+        return
+
     
-    def insert_anywhere(self,some_value,pos :int):
-        '''Consider the Concept of Indexing and Enter the Pos value from 0'''
-        new_value = Node(some_value)
+    def insert_at_pos(self, data: int, pos: int) -> None:
+        
+        '''This function inserts data at the specified position in the Circular Linked List.'''
+        data = Node(data)
         current = self.head
         count = 0
-        if pos == 0: # inserting at start
-            new_value.next = self.head
-            self.head = new_value
-            
-        else:
-            while current is not None:
-                count +=1
-                if count == pos:
-                    new_value.next = current.next
-                    current.next = new_value
-                    return
-                elif count != pos:
-                     current = current.next
 
-    def delete(self,some_value):
-        key = some_value
-        current = self.head
-        prev = None
-        while current is not None:
-            if current.data == key:
-                if prev is None: # Delete at the Start
-                    self.head = current.next  
-                    current = self.head
-                else: 
-                    prev.next = current.next
+        if not self.head:  
+            self.head = data
+            data.next = self.head
+            return
+
+        if pos == 0:  
+            self.insert_at_start(data)
+            return
+
+        while count+1 <= pos:
+            if count != pos:
+                current = current.next
+                
+            elif count == pos:
+                if current.next is not self.head:
                     current = current.next
-            else:
-                prev = current
-                current = current.next    
+                    count += 1
+                else:
+                    self.insert_at_end(data)  
+                    return
+        data.next = current.next
+        current.next = data
+        return
 
-    def PrintLL(self):
+        
+
+    def TraverseCLL(self):
         current = self.head
         while current:
-            print(current.data)
-            current = current.next        
+            print(current.data, end=' ')
+            current = current.next
+            if current.next == self.head:
+                break
+        return
     
-    def Reversal(self):
-        prev = None
-        current = self.head
-        while current is not None:
-            Next = current.next
-            current.next = prev
-            prev = current
-            current = Next
-        self.head = prev; 
-
-                       
-
-ll = SLL()
-ll.insert_at_end(1)
-ll.insert_at_end(2)
-ll.insert_at_end(4)
-ll.insert_anywhere(3,2)
-print("\n After Insertion: \n")
-ll.PrintLL()
-ll.delete(4)
-print("\n After Deletion: \n")
-ll.PrintLL()
-ll.insert_anywhere(4,3)
-ll.insert_at_start(0)
-print("\n After Addding at First \n")
-ll.PrintLL()
-ll.Reversal()
-print("\n After Reversal: \n")
-ll.PrintLL()
-
+    # def insert_at_pos(self,data:int,pos:int) -> None:
+    #     data = Node(data)
+    #     current = self.head
+    #     count = 0
+    #     prev = None
+    #     if not self.head:
+    #         current = data
+    #         data.next = self.head
+    #         return
+    #     if pos == 0:
+    #         self.insert_at_start(data)
+    #     while current is not None:
+    #         count = count + 1
+    #         if count == pos:
+    #             data.next = current
+    #             prev.next = data
+    #             return
+    #         prev = current
+    #         current = current.next
+    #     if pos > count:
+    #         print("There is NO such POSITION!")
+    #         return False
+    #     self.head = current
+    #     return
+    def delete_at_start(self):
+        pass
+        
+cll = CSLL()
+cll.insert_at_start(1)
+cll.insert_at_end(2)
+cll.insert_at_end(4)
+cll.insert_at_pos(3,2)
+cll.TraverseCLL()
