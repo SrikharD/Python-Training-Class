@@ -81,6 +81,16 @@ class CSLL:
                 break
         return
     
+    def delete_at_start(self):
+        pass
+        
+cll = CSLL()
+cll.insert_at_start(1)
+cll.insert_at_end(2)
+cll.insert_at_end(4)
+cll.insert_at_pos(3,2)
+cll.TraverseCLL()
+    
     # def insert_at_pos(self,data:int,pos:int) -> None:
     #     data = Node(data)
     #     current = self.head
@@ -105,12 +115,3 @@ class CSLL:
     #         return False
     #     self.head = current
     #     return
-    def delete_at_start(self):
-        pass
-        
-cll = CSLL()
-cll.insert_at_start(1)
-cll.insert_at_end(2)
-cll.insert_at_end(4)
-cll.insert_at_pos(3,2)
-cll.TraverseCLL()
