@@ -31,8 +31,8 @@ class graphs:
     def dfs(self, v, discovered, parent=-1):
         discovered[v] = True
 
-        for w in range(len(self.adj_matrix[v])):
-            if self.adj_matrix[v][w]:
+        for w in range(len(self.AdjMatrix[v])):
+            if self.AdjMatrix[v][w]:
                 if discovered[w]:
                     if w != parent:
                         return True
@@ -51,3 +51,10 @@ gg.adding_edges(3,2)
 gg.adding_edges(0,0)
 gg.deleting_edges(0,0)
 gg.Travese_Graph()
+discovered = [False] * gg.size
+result = gg.dfs(0,discovered)
+
+if result:
+    print("Cycle Detected in Graph")
+else:
+    print("No Cycle is Found in Graph")
