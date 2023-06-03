@@ -28,15 +28,18 @@ class graphs:
                 print(val, end='')
             print()
             
-    def DFS(graphs,v,discovered,parent = -1): 
+    def dfs(self, v, discovered, parent=-1):
         discovered[v] = True
-        
-        for w in graphs.AdjMatrix[v]:
-            if DFS(graphs,w,discovered,v):
-                return True
-            elif w != parent:
-                return True
-            return False
+
+        for w in range(len(self.adj_matrix[v])):
+            if self.adj_matrix[v][w]:
+                if discovered[w]:
+                    if w != parent:
+                        return True
+                else:
+                    if self.dfs(w, discovered, v):
+                        return True
+        return False
 
 
 
